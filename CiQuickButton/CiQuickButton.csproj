@@ -45,11 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionExecuteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionExecuteControl.Designer.cs">
+      <DependentUpon>ActionExecuteControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ActionForm.Designer.cs">
       <DependentUpon>ActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionRowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionRowControl.Designer.cs">
+      <DependentUpon>ActionRowControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionsLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionsLists.Designer.cs">
+      <DependentUpon>ActionsLists.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -65,8 +83,17 @@
     <Compile Include="ProsesSelector.Designer.cs">
       <DependentUpon>ProcessSelector.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ActionExecuteControl.resx">
+      <DependentUpon>ActionExecuteControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActionForm.resx">
       <DependentUpon>ActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionRowControl.resx">
+      <DependentUpon>ActionRowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionsLists.resx">
+      <DependentUpon>ActionsLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -101,6 +128,14 @@
     <ProjectReference Include="..\Action\Actions.csproj">
       <Project>{e596382f-ac7f-4677-a889-adc9f68d4ef1}</Project>
       <Name>Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommandManager\CommandManager.csproj">
+      <Project>{df6a99f4-1cc7-48dd-8cff-59ba49017502}</Project>
+      <Name>CommandManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonInterfaces\Common.csproj">
+      <Project>{97dba176-b6f2-4f0a-889a-84aeb31cb872}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProcessManager\ProcessManager.csproj">
       <Project>{5f60f187-d0c1-47df-9f23-f245c0f1e738}</Project>

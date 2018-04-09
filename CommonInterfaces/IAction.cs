@@ -7,8 +7,7 @@ namespace Common
 {
     public interface IAction
     {
-        Common.ICommand Command
-        { get; set; }
+        string GetCommand();
 
         string Name
         { get; set; }

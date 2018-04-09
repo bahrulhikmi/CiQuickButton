@@ -7,23 +7,38 @@ namespace ProcessManager
 {
     public class Process : Common.IProcess
     {
-        private static System.Diagnostics.Process mCurrentProcess;
-        public static System.Diagnostics.Process CurrentProcess {
+        private static Process mInstance;
+        public static Process Instance
+        {
+            get
+            {
+                if(mInstance==null)
+                {
+                    mInstance= new Process();
+                }
+
+                return mInstance;
+            }
+
+        }
+
+        private System.Diagnostics.Process mCurrentProcess;
+        public System.Diagnostics.Process CurrentProcess {
             get { return mCurrentProcess; }
             set { mCurrentProcess = value; }
         }
 
         System.Diagnostics.Process IProcess.getProcess()
         {
-            return null;
+            return mCurrentProcess;
         }
 
-        public static void setCurrentProcess(int processId)
+        public void setCurrentProcess(int processId)
         {
             CurrentProcess = System.Diagnostics.Process.GetProcessById(processId);
         }
 
-        public static Dictionary<int, String> getAllProcesses()
+        public Dictionary<int, String> getAllProcesses()
         {
             Dictionary<int, String> processesDict = new Dictionary<int, string>();
           
@@ -40,7 +55,17 @@ namespace ProcessManager
 
         private static String describe(System.Diagnostics.Process  process)
         {
-            return String.Format("Name: {0}, ID: {1} ", process.ProcessName, process.Id);
+            return String.Format("{0}({1}), ID: {2} ", process.ProcessName, process.MainWindowTitle, process.Id);
+        }
+
+        public string DescribeCurrentProcess()
+        {
+            if(mCurrentProcess==null)
+            {
+                return null;
+            }
+
+            return describe(mCurrentProcess);
         }
 
         static int currentSessionId = System.Diagnostics.Process.GetCurrentProcess().SessionId;

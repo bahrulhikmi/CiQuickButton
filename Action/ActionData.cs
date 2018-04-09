@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IO
+namespace Action
 {
-    class Reader
+    public class ActionData
     {
-
-        
+        public string Name;
+        public string Script;
     }
 }

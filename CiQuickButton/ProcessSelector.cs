@@ -24,7 +24,7 @@ namespace CiQuickButton
         private void loadProcesses()
         {
 
-            Dictionary<int, string> processes = ProcessManager.Process.getAllProcesses();
+            Dictionary<int, string> processes = ProcessManager.Process.Instance.getAllProcesses();
 
             if (processes.Count == 0) return;
 
@@ -36,7 +36,7 @@ namespace CiQuickButton
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProcessManager.Process.setCurrentProcess(Convert.ToInt32(listProcess.SelectedValue));
+            ProcessManager.Process.Instance.setCurrentProcess(Convert.ToInt32(listProcess.SelectedValue));
             this.Close();
         }
     }

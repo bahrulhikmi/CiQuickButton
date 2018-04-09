@@ -23,7 +23,10 @@ namespace CiQuickButton
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            Action.Action action = new Action.Action();
+            action.Name = tbActionName.Text;
+            action.Script = rtbCommand.Text;
+            action.Save();
         }
     }
 }

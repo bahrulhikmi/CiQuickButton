@@ -20,18 +20,33 @@ namespace CommandManager
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr point);
 
+        private static CommandExecutor mInstance;
+        public static CommandExecutor Instance
+        {
+            get
+            {
+                if(mInstance==null)
+                {
+                    mInstance = new CommandExecutor();
+                }
+
+                return mInstance;
+            }
+        }
+
         /// <summary>
         /// Send key to execute Paste Special 
         /// </summary>
         /// <param name="command"></param>
         /// <param name="process"></param>
-        public void Execute(Common.ICommand command, Common.IProcess process)
+        public void Execute(Common.IAction command, Common.IProcess process)
         {
-            String text = command.GetText();
+            String text = command.GetCommand();
             IntPtr ciWindow = process.getProcess().MainWindowHandle;
             SetForegroundWindow(ciWindow);
             Clipboard.SetText(text);
             SendKeys.SendWait(CTL+SHIFT+"A");
         }
+
     }
 }
